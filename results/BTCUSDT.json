@@ -1,0 +1,240 @@
+{
+  "config": {
+    "symbol": "BTCUSDT",
+    "cross_symbol": "ETHUSDT",
+    "start": "2026-08-01",
+    "end": "2026-09-30",
+    "market": "um",
+    "bar_ms": 60000,
+    "ret_horizon": 5,
+    "vol_horizon": 30,
+    "train_days": 21,
+    "notional": 10000.0,
+    "thresholds_bps": [
+      0.0,
+      2.0,
+      4.0,
+      8.0
+    ],
+    "tick_size": 0.1,
+    "seed": 0
+  },
+  "n_folds": 38,
+  "test_period": [
+    "2026-08-23",
+    "2026-09-29"
+  ],
+  "n_test_samples": 54720,
+  "returns": [
+    {
+      "model": "zero (random walk)",
+      "IC": 0.0,
+      "hit_rate": NaN,
+      "R2_oos_vs_zero_bps": 0.0,
+      "t_vs_zero": NaN,
+      "days_beating_zero": NaN
+    },
+    {
+      "model": "momentum (ret_5)",
+      "IC": 0.025261472513384054,
+      "hit_rate": 0.5044884947970101,
+      "R2_oos_vs_zero_bps": -9.576394604113858,
+      "t_vs_zero": -0.7078253531356737,
+      "days_beating_zero": 0.5526315789473685
+    },
+    {
+      "model": "order flow (ofi_5)",
+      "IC": 0.004788927318721528,
+      "hit_rate": 0.5013557086325663,
+      "R2_oos_vs_zero_bps": -7.175173133635582,
+      "t_vs_zero": -1.3666985804194733,
+      "days_beating_zero": 0.4473684210526316
+    },
+    {
+      "model": "ridge",
+      "IC": 0.01708851275875668,
+      "hit_rate": 0.5068335043236113,
+      "R2_oos_vs_zero_bps": -94.241114034197,
+      "t_vs_zero": -2.1222814808632355,
+      "days_beating_zero": 0.2631578947368421
+    },
+    {
+      "model": "lightgbm",
+      "IC": 0.012384194182532499,
+      "hit_rate": 0.5022900483658215,
+      "R2_oos_vs_zero_bps": -448.80533808711044,
+      "t_vs_zero": -4.804161981448058,
+      "days_beating_zero": 0.10526315789473684
+    }
+  ],
+  "volatility": [
+    {
+      "model": "persistence (rv_30)",
+      "MSE_log_rv": 0.14778708266172996,
+      "QLIKE": 0.40456784042929744,
+      "R2_oos_vs_HAR": -0.225051411864452,
+      "t_vs_HAR": -13.329918211721989,
+      "days_beating_HAR": 0.05263157894736842
+    },
+    {
+      "model": "ewma",
+      "MSE_log_rv": 0.1254670134322583,
+      "QLIKE": 0.31644545141412206,
+      "R2_oos_vs_HAR": -0.04003366992104751,
+      "t_vs_HAR": -2.32878864119733,
+      "days_beating_HAR": 0.3157894736842105
+    },
+    {
+      "model": "HAR",
+      "MSE_log_rv": 0.1206374534410823,
+      "QLIKE": 0.3429598169608745,
+      "R2_oos_vs_HAR": 0.0,
+      "t_vs_HAR": NaN,
+      "days_beating_HAR": NaN
+    },
+    {
+      "model": "lightgbm",
+      "MSE_log_rv": 0.1106657547244353,
+      "QLIKE": 0.28743189400336033,
+      "R2_oos_vs_HAR": 0.0826583986333651,
+      "t_vs_HAR": 4.299360396349514,
+      "days_beating_HAR": 0.7894736842105263
+    }
+  ],
+  "backtests": [
+    {
+      "strategy": "taker, 0 bps threshold",
+      "net_pnl_usd": -83098.11565685777,
+      "pnl_bps_of_turnover": -4.9965090669974535,
+      "fees_usd": 83156.17418342226,
+      "turnover_usd": 166312348.36684453,
+      "fills": 53398,
+      "cancelled": 0,
+      "sharpe_annual": -75.31744260852783,
+      "max_drawdown_usd": 80912.16017204456,
+      "deflated_sharpe": 1.5891789006157939e-19,
+      "t_stat": -24.301939272151426
+    },
+    {
+      "strategy": "maker, 0 bps threshold",
+      "net_pnl_usd": -37957.169603801914,
+      "pnl_bps_of_turnover": -3.1749818642637835,
+      "fees_usd": 23910.16467276952,
+      "turnover_usd": 119550823.3638476,
+      "fills": 39275,
+      "cancelled": 15201,
+      "sharpe_annual": -59.87706448673855,
+      "max_drawdown_usd": 36987.50426852769,
+      "deflated_sharpe": 5.374559662821495e-37,
+      "t_stat": -19.319944153104558
+    },
+    {
+      "strategy": "taker, 2 bps threshold",
+      "net_pnl_usd": -25799.652763601363,
+      "pnl_bps_of_turnover": -4.93818411718982,
+      "fees_usd": 26122.61121835532,
+      "turnover_usd": 52245222.436710626,
+      "fills": 13175,
+      "cancelled": 0,
+      "sharpe_annual": -32.25680425115743,
+      "max_drawdown_usd": 25124.85645592376,
+      "deflated_sharpe": 1.965064787795895e-71,
+      "t_stat": -10.407986130115184
+    },
+    {
+      "strategy": "maker, 2 bps threshold",
+      "net_pnl_usd": -13169.484839853701,
+      "pnl_bps_of_turnover": -3.0655236421501737,
+      "fees_usd": 8591.996916139628,
+      "turnover_usd": 42959984.580698125,
+      "fills": 10963,
+      "cancelled": 2278,
+      "sharpe_annual": -27.6682781887865,
+      "max_drawdown_usd": 12896.411276072395,
+      "deflated_sharpe": 8.890546810762967e-99,
+      "t_stat": -8.927451504211717
+    },
+    {
+      "strategy": "taker, 4 bps threshold",
+      "net_pnl_usd": -12592.03782490395,
+      "pnl_bps_of_turnover": -5.028343816287372,
+      "fees_usd": 12521.05890623163,
+      "turnover_usd": 25042117.81246326,
+      "fills": 5740,
+      "cancelled": 0,
+      "sharpe_annual": -23.579320195673276,
+      "max_drawdown_usd": 12306.103124747657,
+      "deflated_sharpe": 3.3736479533608523e-94,
+      "t_stat": -7.608107599354219
+    },
+    {
+      "strategy": "maker, 4 bps threshold",
+      "net_pnl_usd": -6684.8000379355635,
+      "pnl_bps_of_turnover": -3.1399349840121875,
+      "fees_usd": 4257.922582456642,
+      "turnover_usd": 21289612.91228321,
+      "fills": 4948,
+      "cancelled": 797,
+      "sharpe_annual": -22.563415423951533,
+      "max_drawdown_usd": 6580.927663268712,
+      "deflated_sharpe": 2.526241782288457e-94,
+      "t_stat": -7.280315587124168
+    },
+    {
+      "strategy": "taker, 8 bps threshold",
+      "net_pnl_usd": -3499.357398519556,
+      "pnl_bps_of_turnover": -5.066064949015185,
+      "fees_usd": 3453.7233866295105,
+      "turnover_usd": 6907446.77325902,
+      "fills": 1459,
+      "cancelled": 0,
+      "sharpe_annual": -18.676478898251997,
+      "max_drawdown_usd": 3389.3040659864873,
+      "deflated_sharpe": 1.0963121931354118e-91,
+      "t_stat": -6.026155964455803
+    },
+    {
+      "strategy": "maker, 8 bps threshold",
+      "net_pnl_usd": -1774.7257313282735,
+      "pnl_bps_of_turnover": -2.8183811553341442,
+      "fees_usd": 1259.3936969592487,
+      "turnover_usd": 6296968.484796245,
+      "fills": 1337,
+      "cancelled": 116,
+      "sharpe_annual": -13.71813128727699,
+      "max_drawdown_usd": 1769.150641792252,
+      "deflated_sharpe": 2.2045714820041015e-97,
+      "t_stat": -4.426294652668666
+    },
+    {
+      "strategy": "taker, 0 bps threshold, zero fees",
+      "net_pnl_usd": 58.05852656454044,
+      "pnl_bps_of_turnover": 0.0034909330025499658,
+      "fees_usd": 0.0,
+      "turnover_usd": 166312348.36684453,
+      "fills": 53398,
+      "cancelled": 0,
+      "sharpe_annual": 0.16562924478316987,
+      "max_drawdown_usd": 524.0147927409489,
+      "deflated_sharpe": NaN,
+      "t_stat": 0.05344196123776983
+    }
+  ],
+  "top_features_return_model": {
+    "parkinson_30": 0.0906,
+    "ewma_vol": 0.0652,
+    "rv_240": 0.0596,
+    "rv_30": 0.0583,
+    "rv_1440": 0.0574,
+    "tod_cos": 0.0491,
+    "x_rv_30": 0.0471,
+    "amihud_60": 0.0431,
+    "ret_60": 0.0428,
+    "tod_sin": 0.0424,
+    "depth_imb_5": 0.0364,
+    "rv_5": 0.0353,
+    "vwap_dev_60": 0.0317,
+    "trade_size": 0.0291,
+    "ret_15": 0.0285
+  }
+}
